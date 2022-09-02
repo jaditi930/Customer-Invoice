@@ -1,0 +1,12 @@
+const item_form=document.getElementById("item-form")
+let add_btn=document.getElementById("add_item")
+console.log(add_btn)
+add_btn.addEventListener("click",()=>{
+    let clone_node=item_form.cloneNode(true)
+    let cust_form=document.getElementById("cust_form")
+    let subBtn=document.getElementById("submit")
+    subBtn.remove()
+    cust_form.removeChild(cust_form.lastChild)
+    cust_form.appendChild(clone_node)
+    cust_form.appendChild(subBtn)
+})
