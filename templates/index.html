@@ -18,13 +18,13 @@
         <input type="text" id="phone" name="phone"><br>
         <div id="item-form">
             <label for="itemname">Item Name</label><br>
-            <input type="text" id="itemname" name="itemname"><br>
+            <input type="text" class="myitem" id="itemname" name="itemname"><br>
 
             <label for="quantity">  Quantity</label><br>
-            <input type="number" id="quantity" name="quantity"><br>
+            <input type="number" class="myitem" id="quantity" name="quantity"><br>
 
             <label for="price">Price</label><br>
-            <input type="number" id="price" name="price"><br>
+            <input type="number" class="myitem" id="price" name="price"><br>
 
             <label for="category">Choose a category:</label>
             
@@ -32,9 +32,9 @@
             <option value="Grocery">Grocery</option>
             <option value="Electronics">Electronics</option>
             </select><br>
-            <button type="button" id="add_item">Add another item</button>
     </div>
-        <button id="submit" type="submit">Submit</button>
+    <button type="button" id="add_item">Add another item</button>
+    <button id="submit" type="submit">Submit</button>
     </form>
     <script src= "{% static 'index.js' %}" ></script>
 </body>

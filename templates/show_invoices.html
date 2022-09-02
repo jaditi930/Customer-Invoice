@@ -24,7 +24,7 @@
               <td>{{inv.name}}</td>
               <td>{{inv.email}}</td>
               <td>{{inv.phone}}</td>
-              <td>{{inv.itemname}}</td>
+              <td><a href="/generateInvoice/{{inv.id}}">Generate Invoice</a></td>
             </tr>
     {% endfor %}
         </table>

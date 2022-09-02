@@ -27,26 +27,37 @@ def succeed(request):
     return redirect("/")
 
 def show_all(request):
-    cust_info=InvoiceForm.objects.all()
-    inames=InvoiceForm.objects.values('itemname')
-    list_names=list()
-    for i in range(inames.count()):
-      list_names.append(inames[i]['itemname'])
-    for i in range (inames.count()):
-        try:
-            list_names[i]=json.loads(list_names[i])
-        except json.decoder.JSONDecodeError:
-            pass
-    print(list_names)
-    names_dict=list()
-    for i,j in zip(list_names,cust_info):
-        dic=dict()
-        dic["itemname"]=i
-        dic["name"]=j.name
-        dic["email"]=j.email
-        dic["phone"]=j.phone
-        names_dict.append(dic)
-    print(names_dict)
-    context={"cust_info":cust_info,"names":names_dict}
+    inames=InvoiceForm.objects.values('id','name','email','phone')
+    
+    context={"names":inames}
     return render(request,"show_invoices.html",context)
+
+def generate(request,id):
+    obj=InvoiceForm.objects.get(id=id)
+    try:
+      names=json.loads(obj.itemname)
+      prices=json.loads(obj.price)
+      category=json.loads(obj.category)
+      quantity=json.loads(obj.quantity)
+      itemlist=list()
+      for i,j,k,l in zip(names,prices,quantity,category):
+            itemdict=dict()
+            itemdict["name"]=i
+            itemdict["price"]=j
+            itemdict["quantity"]=k
+            itemdict["category"]=l
+            itemlist.append(itemdict)
+            print(itemlist)
+      return render(request,"generateInvoice.html",{"obj":obj,"items":itemlist})
+    except json.decoder.JSONDecodeError:
+        names=obj.itemname
+        prices=obj.price
+        category=obj.category
+        quantity=obj.quantity
+        itemlist=list()
+        itemdict={"name":names,"price":prices,"quantity":quantity,"category":category}
+        itemlist.append(itemdict)
+        print(itemlist)
+        return render(request,"generateInvoice.html",{"obj":obj,"items":itemlist})
+
 

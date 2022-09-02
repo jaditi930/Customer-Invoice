@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice No {{obj.id}}</title>
+</head>
+<body>
+    <div>
+        <p>Name:{{obj.name}}</p>
+        <p>Name:{{obj.phone}}</p>
+        <p>Name:{{obj.email}}</p>
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Category</th>
+            </tr>
+            {% for item in items %}
+            <tr>
+             <th>{{item.name}}</th>
+             <th>{{item.price}}</th>
+             <th>{{item.quantity}}</th>
+             <th>{{item.category}}</th>
+            </tr>
+            {% endfor %}
+        </table>
+</body>
+</html>
