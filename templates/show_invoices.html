@@ -19,11 +19,12 @@
               <th>Email</th>
               <th>Phone Number</th>
             </tr>
-        {% for inv in invoice_list %}
+        {% for inv in names %}
             <tr>
               <td>{{inv.name}}</td>
               <td>{{inv.email}}</td>
               <td>{{inv.phone}}</td>
+              <td>{{inv.itemname}}</td>
             </tr>
     {% endfor %}
         </table>

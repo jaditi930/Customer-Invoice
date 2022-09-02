@@ -8,9 +8,7 @@ class InvoiceForm(models.Model):
     itemname=models.TextField(null=True)
     quantity=models.TextField(null=True)
     price=models.TextField(null=True)
-    CHOICES=(('grocery','GROCERY'),
-    ('electronics','ELECTRONICS'))
-    category = models.TextField(max_length=12, choices=CHOICES,null=True)
+    category = models.TextField(null=True)
 
 
 
