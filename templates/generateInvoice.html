@@ -5,12 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invoice No {{obj.id}}</title>
+    <style>
+        table,th,td
+        {
+         border:2px solid black;
+        }
+    </style>
 </head>
 <body>
     <div>
-        <p>Name:{{obj.name}}</p>
-        <p>Name:{{obj.phone}}</p>
-        <p>Name:{{obj.email}}</p>
+        <p><strong>Name:</strong>{{obj.name}}</p>
+        <p><strong>Phone: </strong>   {{obj.phone}}</p>
+        <p><strong>Email: </strong>   {{obj.email}}</p>
         <table>
             <tr>
                 <th>Item</th>
@@ -20,12 +26,18 @@
             </tr>
             {% for item in items %}
             <tr>
-             <th>{{item.name}}</th>
-             <th>{{item.price}}</th>
-             <th>{{item.quantity}}</th>
-             <th>{{item.category}}</th>
+             <td>{{item.name}}</td>
+             <td>{{item.price}}</td>
+             <td>{{item.quantity}}</td>
+             <td>{{item.category}}</td>
             </tr>
             {% endfor %}
+            <tr>
+                <td>Total:</td>
+                <td></td>
+                <td></td>
+                <td>{{total}}</td>
+            </tr>
         </table>
 </body>
 </html>

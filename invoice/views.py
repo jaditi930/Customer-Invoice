@@ -40,24 +40,27 @@ def generate(request,id):
       category=json.loads(obj.category)
       quantity=json.loads(obj.quantity)
       itemlist=list()
+      total=0
       for i,j,k,l in zip(names,prices,quantity,category):
             itemdict=dict()
             itemdict["name"]=i
             itemdict["price"]=j
+            total+=float(j)
             itemdict["quantity"]=k
             itemdict["category"]=l
             itemlist.append(itemdict)
             print(itemlist)
-      return render(request,"generateInvoice.html",{"obj":obj,"items":itemlist})
+      return render(request,"generateInvoice.html",{"obj":obj,"items":itemlist,"total":total})
     except json.decoder.JSONDecodeError:
         names=obj.itemname
         prices=obj.price
+        total+=float(prices)
         category=obj.category
         quantity=obj.quantity
         itemlist=list()
         itemdict={"name":names,"price":prices,"quantity":quantity,"category":category}
         itemlist.append(itemdict)
         print(itemlist)
-        return render(request,"generateInvoice.html",{"obj":obj,"items":itemlist})
+        return render(request,"generateInvoice.html",{"obj":obj,"items":itemlist,"total":total})
 
 
