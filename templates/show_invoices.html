@@ -1,26 +1,26 @@
 {% extends 'base.html' %}
     {% block title %}All Invoices{% endblock %}
-    <style>
-        table, th, td {
-          border:1px solid black;
-          text-align:center;
-        }
       </style>
   {% block content %}
-        <table class="table" style="width:100%">
+        <table class="table table-striped">
+          <thead>
             <tr>
               <th>Name</th>
               <th>Email</th>
               <th>Phone Number</th>
+              <th>Generate Invoices</th>
             </tr>
+          </thead>
         {% for inv in names %}
+        <tbody>
             <tr>
               <td>{{inv.name}}</td>
               <td>{{inv.email}}</td>
               <td>{{inv.phone}}</td>
-              <td><a href="/generateInvoice/{{inv.id}}">Generate Invoice</a></td>
+              <td><a href="/generateInvoice/{{inv.id}}">View Invoice</a></td>
             </tr>
+          </tbody>
     {% endfor %}
         </table>
-        
+      
         {%  endblock %}
