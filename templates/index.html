@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
     {% load static %}
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Invoice</title>
-</head>
-<body>
+    {% block title %}Customer Invoice{% endblock %}
+    {% block content %}
     <form id="cust_form" method="POST" action="succeed/">
         {% csrf_token %}
         <label for="name">Name:</label><br>
@@ -37,5 +31,4 @@
     <button id="submit" type="submit">Submit</button>
     </form>
     <script src= "{% static 'index.js' %}" ></script>
-</body>
-</html>
+    {% endblock %}
