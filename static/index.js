@@ -3,18 +3,40 @@ let add_btn=document.getElementById("add_item")
 let sub_btn=document.getElementById("sub_btn")
 let add_sub_btn=document.getElementById("add/submit")   
 
+let itemHelp=document.getElementById("itemHelp")
+let priceHelp=document.getElementById("priceHelp")
+let nameHelp=document.getElementById("nameHelp")
+let phoneHelp=document.getElementById("phoneHelp")
+
+let req_field=`<i class="fa fa-exclamation-triangle text-danger">This field is required</i>`
+
+function clearWarnings()
+{
+itemHelp.innerHTML=""
+
+priceHelp.innerHTML=""
+
+nameHelp.innerHTML=""
+
+phoneHelp.innerHTML=""
+return
+}
+
+let form = document.getElementById("cust_form");
+function handleForm(event) { event.preventDefault(); } 
+
 add_btn.addEventListener("click",()=>{
     let itemname=document.getElementsByName('itemname')[0].value
-    let price=document.getElementsByName("price")[0].value
+let price=document.getElementsByName("price")[0].value
     if (itemname=="")
-    {   document.getElementById("itemHelp").innerHTML=`<i class="fa fa-exclamation-triangle"></i>`
-    document.getElementById("itemHelp").innerText="This Field is required"
-        return}
+    {   itemHelp.innerHTML=req_field
+        return
+    }
     if (price=="")
     {
-        document.getElementById("priceHelp").innerHTML=`<i class="fa fa-exclamation-triangle"></i>`
-        document.getElementById("priceHelp").innerText="This Field is required"
-    return }
+        priceHelp.innerHTML=req_field
+        return 
+    }
 
     let clone_node=item_form.cloneNode(true)
         let cust_form=document.getElementById("cust_form")
@@ -28,32 +50,33 @@ add_btn.addEventListener("click",()=>{
     }
 })
 sub_btn.addEventListener("click",()=>{
-    console.log("Excecuting")
-    let itemname=document.getElementsByName('itemname')[0].value
-    let price=document.getElementsByName("price")[0].value
-    console.log(itemname,price)
+    form.addEventListener('submit', handleForm);
+let itemname=document.getElementsByName('itemname')[0].value
+let price=document.getElementsByName("price")[0].value
+let naame=document.getElementsByName("name")[0].value
+let phone=document.getElementsByName("phone")[0].value
+
+    clearWarnings()
     if (itemname=="")
     {   
-        document.getElementById("itemHelp").innerHTML=`<i class="fa fa-exclamation-triangle"></i>`
-        document.getElementById("itemHelp").innerText="This Field is required"
-        return}
+        itemHelp.innerHTML=req_field
+        return
+    }
     if (price=="")
     {           
-        document.getElementById("priceHelp").innerHTML=`<i class="fa fa-exclamation-triangle"></i>`
-        document.getElementById("priceHelp").innerText="This Field is required"
+        priceHelp.innerHTML=req_field
     return }
-let name=document.getElementsByName("name")[0].value
-let phone=document.getElementsByName("phone")[0].value
-if (name=="")
-    {        document.getElementById("nameHelp").innerHTML=`<i class="fa fa-exclamation-triangle"></i>`
-        document.getElementById("nameHelp").innerText="This Field is required"
-        return}
-    if (phone=="")
-    {        document.getElementById("phoneHelp").innerHTML=`<i class="fa fa-exclamation-triangle"></i>`
 
-        document.getElementById("phoneHelp").innerText="This Field is required"
-    return }
-    console.log("reached")
-document.getElementsByName("myform")[0].action="succeed/"
- 
+if (naame=="")
+    {        nameHelp.innerHTML=req_field
+        return
+    }
+    if (phone=="")
+    {        phoneHelp.innerHTML=req_field
+
+    return 
+    }
+
+form.removeEventListener('submit',handleForm)
+document.myform.action="succeed/"
 })

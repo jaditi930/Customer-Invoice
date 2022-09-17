@@ -2,7 +2,7 @@
     {% load static %}
     {% block title %}Customer Invoice{% endblock %}
     {% block content %}
-    <form name="myform" id="cust_form" method="POST">
+    <form name="myform" id="cust_form" method="POST" action="">
         {% csrf_token %}
 
           <div class="row justify-content-center">
@@ -13,7 +13,7 @@
          <div class="mb-3" id="namediv"> 
         <label class="form-label fw-bold" for="name">Name:</label>
         <input type="text" class="form-control" id="name" ariadescribedby="nameHelp" name="name">
-        <small id="nameHelp" class="text-muted text-danger"></i></small>
+        <small id="nameHelp" class="text-muted"></small>
 
          </div>
         <label class="form-label fw-bold" for="email">Email</label>
@@ -21,7 +21,7 @@
            <div class="mb-3" id="phonediv">
         <label class="form-label fw-bold" for="phone">Phone Number</label>
         <input type="text" class="form-control" id="phone" ariadescribedby="phoneHelp" name="phone">
-        <small id="phoneHelp" class="text-muted text-danger"></i></small>
+        <small id="phoneHelp" class="text-muted"></small>
 
 </div> 
 </div>
@@ -34,7 +34,7 @@
             <div id="itemnamediv">
                 <label for="itemname" class="form-label fw-bold">Item Name</label>
                 <input type="text" class="myitem form-control" id="itemname" ariadescribedby="itemHelp" name="itemname">
-                <small id="itemHelp" class="text-muted text-danger"></small>
+                <small id="itemHelp" class="text-muted"></small>
             </div>
             <div>
                 <label for="quantity" class="form-label fw-bold">  Quantity</label>
@@ -43,7 +43,7 @@
             <div id="pricediv">
                 <label for="price" class="form-label fw-bold">Price</label>
                 <input type="number" class="myitem form-control" id="price" ariadescribedby="priceHelp" name="price">
-                <small id="priceHelp" class="text-muted text-danger"></small>
+                <small id="priceHelp" class="text-muted"></small>
             </div>
             <div>
             <label for="category" class="form-label fw-bold">Choose a category:</label>
@@ -59,7 +59,7 @@
 <div id="add/submit" class="row justify-content-center">
     <div class="col-8">
     <button type="button" class="btn btn-secondary" id="add_item">Add another item</button>
-    <button class="btn btn-primary" type="submit" id="sub_btn">Submit</button>
+    <button class="btn btn-primary" id="sub_btn" type="submit">Submit</button>
 </div>
 </div>
     </form>
