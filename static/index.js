@@ -7,7 +7,7 @@ let itemHelp=document.getElementById("itemHelp")
 let priceHelp=document.getElementById("priceHelp")
 let nameHelp=document.getElementById("nameHelp")
 let phoneHelp=document.getElementById("phoneHelp")
-document.getElementsByClassName("delete")[0].setAttribute("id","first_item")
+// document.getElementsByClassName("delete")[0].setAttribute("id","first_item")
 
 let req_field=`<i class="fa fa-exclamation-triangle text-danger">This field is required</i>`
 
@@ -46,9 +46,9 @@ let cust_form=document.getElementById("cust_form")
     add_sub_btn.remove()
     cust_form.appendChild(clone_node)
     cust_form.appendChild(add_sub_btn)
-    console.log(clone_node)
-    let children=document.getElementsByClassName("delete")
-     children[children.length-1].id=""
+    // console.log(clone_node)
+    // let children=document.getElementsByClassName("delete")
+    //  children[children.length-1].id=""
     let ele=document.getElementsByClassName("myitem")
     for(let e=ele.length-3;e<ele.length;e++)
     {
@@ -58,7 +58,7 @@ let cust_form=document.getElementById("cust_form")
     delete_btns.forEach((d)=>
     d.addEventListener("click",(event)=>{
     // console.log(event.path[4])
-    if(d.id!="first_item")
+    if(document.getElementById("cust_form").children.length>2)
     event.path[4].innerHTML=""
 }))
 })
