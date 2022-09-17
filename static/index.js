@@ -26,6 +26,13 @@ let form = document.getElementById("cust_form");
 function handleForm(event) { event.preventDefault(); } 
 
 add_btn.addEventListener("click",()=>{
+    let delete_btns=document.querySelectorAll(".delete")
+    console.log(delete_btns)
+    delete_btns.forEach((d)=>
+    d.addEventListener("click",(event)=>{
+    console.log(event.path[4])
+    event.path[4].innerHTML=""
+}))
     let itemname=document.getElementsByName('itemname')[0].value
 let price=document.getElementsByName("price")[0].value
     if (itemname=="")
