@@ -7,6 +7,7 @@ let itemHelp=document.getElementById("itemHelp")
 let priceHelp=document.getElementById("priceHelp")
 let nameHelp=document.getElementById("nameHelp")
 let phoneHelp=document.getElementById("phoneHelp")
+document.getElementsByClassName("delete")[0].setAttribute("id","first_item")
 
 let req_field=`<i class="fa fa-exclamation-triangle text-danger">This field is required</i>`
 
@@ -26,13 +27,7 @@ let form = document.getElementById("cust_form");
 function handleForm(event) { event.preventDefault(); } 
 
 add_btn.addEventListener("click",()=>{
-    let delete_btns=document.querySelectorAll(".delete")
-    console.log(delete_btns)
-    delete_btns.forEach((d)=>
-    d.addEventListener("click",(event)=>{
-    console.log(event.path[4])
-    event.path[4].innerHTML=""
-}))
+    
     let itemname=document.getElementsByName('itemname')[0].value
 let price=document.getElementsByName("price")[0].value
     if (itemname=="")
@@ -46,15 +41,26 @@ let price=document.getElementsByName("price")[0].value
     }
 
     let clone_node=item_form.cloneNode(true)
-        let cust_form=document.getElementById("cust_form")
+          
+let cust_form=document.getElementById("cust_form")
     add_sub_btn.remove()
     cust_form.appendChild(clone_node)
     cust_form.appendChild(add_sub_btn)
+    console.log(clone_node)
+    let children=document.getElementsByClassName("delete")
+     children[children.length-1].id=""
     let ele=document.getElementsByClassName("myitem")
     for(let e=ele.length-3;e<ele.length;e++)
     {
     ele[e].value=""
     }
+    let delete_btns=document.querySelectorAll(".delete")
+    delete_btns.forEach((d)=>
+    d.addEventListener("click",(event)=>{
+    // console.log(event.path[4])
+    if(d.id!="first_item")
+    event.path[4].innerHTML=""
+}))
 })
 sub_btn.addEventListener("click",()=>{
     form.addEventListener('submit', handleForm);
